@@ -52,6 +52,9 @@
 ;;      (add-hook hook #'lin-mode))
 ;;
 ;; Else invoke `lin-mode' interactively.
+;;
+;; Consult the manual for further details.  Or visit the documentation's
+;; web page: <https://protesilaos.com/emacs/lin>.
 
 ;;; Code:
 
@@ -67,21 +70,14 @@
 Set to non-nil to always override the foreground colors on the
 current line that is highlighted by `lin-mode'.
 
-This requires `lin-mode' to be restarted wherever it is active."
+This requires `lin-mode' to be restarted wherever it is active.
+
+When this option is nil, the `lin-hl' face is used.  Otherwise
+the `lin-hl-override-fg' is applied."
   :type 'boolean
   :group 'lin)
 
 (defface lin-hl
-  '((default :extend t)
-    (((class color) (min-colors 88) (background light))
-     :background "#b0d8ff" :foreground "#000000")
-    (((class color) (min-colors 88) (background dark))
-     :background "#103265" :foreground "#ffffff")
-    (t :inherit highlight))
-  "Face for locally remapped `hl-line' face via `lin-mode'."
-  :group 'lin)
-
-(defface lin-hl-no-fg
   '((default :foreground unspecified :extend t)
     (((class color) (min-colors 88) (background light))
      :background "#b0d8ff")
@@ -89,18 +85,30 @@ This requires `lin-mode' to be restarted wherever it is active."
      :background "#103265")
     (t :inherit highlight))
   "Like `lin-hl', but does not override foreground color.
+Used only when `lin-override-foreground' is nil."
+  :group 'lin)
+
+(defface lin-hl-override-fg
+  '((default :extend t)
+    (((class color) (min-colors 88) (background light))
+     :background "#b0d8ff" :foreground "#000000")
+    (((class color) (min-colors 88) (background dark))
+     :background "#103265" :foreground "#ffffff")
+    (t :inherit highlight))
+  "Face for locally remapped `hl-line' face via `lin-mode'.
 Used only when `lin-override-foreground' is non-nil."
   :group 'lin)
 
 (defun lin--face ()
   "Determine face based on `lin-override-foreground'."
-  (if lin-override-foreground 'lin-hl 'lin-hl-no-fg))
+  (if lin-override-foreground 'lin-hl-override-fg 'lin-hl))
 
 (defvar lin--cookie nil
   "Cookie returned by `face-remap-add-relative'.")
 
 (define-minor-mode lin-mode
-  "Remap `hl-line' face to a local `lin-hl' face."
+  "Remap `hl-line' face to a local LIN face.
+The overall style is controlled by `lin-override-foreground'."
   :local t
   :init-value nil
   (let ((face (lin--face)))
