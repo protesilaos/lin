@@ -183,6 +183,18 @@ switching between Modus Operandi and Vivendi):
                     :underline (modus-themes-color 'green-intense))
 #+end_src
 
+* Acknowledgements
+:PROPERTIES:
+:CUSTOM_ID: h:0f80e78f-d6b3-42cd-8e49-7ac47fd2fa96
+:END:
+#+cindex: Contributors
+
+LIN is meant to be a collective effort.  Every bit of help matters.
+
++ Author/maintainer :: Protesilaos Stavrou.
+
++ Ideas and user feedback :: Nicolas De Jaeghere.
+
 * GNU Free Documentation License
 :PROPERTIES:
 :APPENDIX: t
