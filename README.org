@@ -1,0 +1,47 @@
+#+title: LIN Is Noticeable (lin.el)
+#+author: Protesilaos Stavrou
+#+email: info@protesilaos.com
+#+language: en
+#+options: ':t toc:nil author:t email:t num:t
+#+startup: content
+
+NOTE 2021-11-01: Work-in-progress.
+
+* Overview
+
+LIN locally remaps the ~hl-line~ face to a style that is optimal for major
+modes where line selection is the primary mode of interaction.
+
+The idea is that ~hl-line~ cannot work equally well for contexts with
+competing priorities: (i) line selection, or (ii) simple line highlight.
+In the former case, the current line needs to be made prominent because
+it carries a specific meaning of some significance in the given context.
+Whereas in the latter case, the primary mode of interaction does not
+revolve around the line highlight itself: it may be because the focus is
+on editing text or reading through the buffer~s contents, so the current
+line highlight is more of a gentle reminder of the point~s location on
+the vertical axis.
+
+~lin-mode~ only shows its effect when ~hl-line-mode~ is active or, more
+specifically, when the ~hl-line~ face is used in the buffer.  ~lin-mode~
+DOES NOT activate ~hl-line-mode~ and does not do anything other than the
+aforementioned face remapping.
+
+* Sample usage
+
+#+begin_src emacs-lisp
+(add-hook 'elfeed-search-mode-hook #'lin-mode)
+#+end_src
+
+Or for more mode hooks:
+
+#+begin_src emacs-lisp
+(dolist (hook '(elfeed-search-mode-hook notmuch-search-mode-hook))
+  (add-hook hook #'lin-mode))
+#+end_src
+
+Else invoke ~lin-mode~ interactively.
+
+* COPYING
+
+GNU General Public License, version 3.
