@@ -61,7 +61,7 @@
   "Locally remap `hl-line' face for greater flexility."
   :group 'convenience)
 
-(defcustom lin-foreground-override nil
+(defcustom lin-override-foreground nil
   "Do not override foreground colors.
 
 Set to non-nil to always override the foreground colors on the
@@ -92,8 +92,8 @@ This requires `lin-mode' to be restarted wherever it is active."
   :group 'lin)
 
 (defun lin--face ()
-  "Determine face based on `lin-foreground-override'."
-  (if lin-foreground-override 'lin-hl 'lin-hl-line-no-fg))
+  "Determine face based on `lin-override-foreground'."
+  (if lin-override-foreground 'lin-hl 'lin-hl-no-fg))
 
 (defvar lin--cookie nil
   "Cookie returned by `face-remap-add-relative'.")
