@@ -81,14 +81,15 @@ This requires `lin-mode' to be restarted wherever it is active."
   "Face for locally remapped `hl-line' face via `lin-mode'."
   :group 'lin)
 
-(defface lin-hl-line-no-fg
+(defface lin-hl-no-fg
   '((default :foreground unspecified :extend t)
     (((class color) (min-colors 88) (background light))
      :background "#b0d8ff")
     (((class color) (min-colors 88) (background dark))
      :background "#103265")
     (t :inherit highlight))
-  "Like `lin-hl', but does not override foreground color."
+  "Like `lin-hl', but does not override foreground color.
+Used only when `lin-override-foreground' is non-nil."
   :group 'lin)
 
 (defun lin--face ()
