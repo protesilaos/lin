@@ -78,7 +78,7 @@ the `lin-hl-override-fg' is applied."
   :group 'lin)
 
 (defface lin-hl
-  '((default :foreground unspecified :extend t)
+  '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
      :background "#b0d8ff")
     (((class color) (min-colors 88) (background dark))
@@ -89,7 +89,7 @@ Used only when `lin-override-foreground' is nil."
   :group 'lin)
 
 (defface lin-hl-override-fg
-  '((default :extend t)
+  '((default :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
      :background "#b0d8ff" :foreground "#000000")
     (((class color) (min-colors 88) (background dark))
