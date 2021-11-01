@@ -91,7 +91,7 @@ This requires `lin-mode' to be restarted wherever it is active."
   "Like `lin-hl', but does not override foreground color."
   :group 'lin)
 
-(defun line--face ()
+(defun lin--face ()
   "Determine face based on `lin-foreground-override'."
   (if lin-foreground-override 'lin-hl 'lin-hl-line-no-fg))
 
@@ -102,7 +102,7 @@ This requires `lin-mode' to be restarted wherever it is active."
   "Remap `hl-line' face to a local `lin-hl' face."
   :local t
   :init-value nil
-  (let ((face (line--face)))
+  (let ((face (lin--face)))
     (if lin-mode
         (setq lin--cookie (face-remap-add-relative 'hl-line face))
       (face-remap-remove-relative lin--cookie))))
