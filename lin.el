@@ -103,7 +103,7 @@ Used only when `lin-override-foreground' is non-nil."
   "Determine face based on `lin-override-foreground'."
   (if lin-override-foreground 'lin-hl-override-fg 'lin-hl))
 
-(defvar lin--cookie nil
+(defvar-local lin--cookie nil
   "Cookie returned by `face-remap-add-relative'.")
 
 (define-minor-mode lin-mode
