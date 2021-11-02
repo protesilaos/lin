@@ -84,7 +84,7 @@ the `lin-hl-override-fg' is applied."
     (((class color) (min-colors 88) (background dark))
      :background "#103265")
     (t :inherit highlight))
-  "Like `lin-hl', but does not override foreground color.
+  "Like `lin-hl-override-fg', but does not override foreground color.
 Used only when `lin-override-foreground' is nil."
   :group 'lin)
 
