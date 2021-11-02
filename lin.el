@@ -126,4 +126,5 @@ The overall style is controlled by `lin-override-foreground'."
     (face-remap-remove-relative lin--cookie)))
 
 (provide 'lin)
+
 ;;; lin.el ends here
