@@ -183,6 +183,77 @@ switching between Modus Operandi and Vivendi):
                     :underline (modus-themes-color 'green-intense))
 #+end_src
 
+** Use system colors on macOS
+:PROPERTIES:
+:CUSTOM_ID: h:6bb11a50-cca9-49ca-9ea0-9d26c9324068
+:END:
+
+On macOS, it is possible to use named system colors. For a list of
+available colors, see Apple's Human Interface Guidelines:
+https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
+
+To use macOS's named colors for selections as LIN's background and
+foreground instead of specifying color values directly, tweak the two
+LIN faces:
+
+#+begin_src emacs-lisp
+(when (memq window-system '(mac ns))
+  (set-face-attribute 'lin-hl nil
+                      :background "selectedContentBackgroundColor")
+
+  ;; To also override the foreground (see `lin-override-foreground'):
+  (set-face-attribute 'lin-hl-override-fg nil
+                      :foreground "alternateSelectedControlTextColor"
+                      :background "selectedContentBackgroundColor"))
+#+end_src
+
+Note that these named colors are "Dynamic System Colors": in dark
+mode, they produce a different value than in light mode. That means
+you don't need to pick dark and light colors individually. The same
+color names will work.
+
+However, you need to trigger an update of LIN's faces to pick up the
+color values if you change the appearance from dark to light, or light
+to dark. macOS builds of Emacs have a hook for this, and you can
+perform a color update by adding a function to
+~ns-system-appearance-change-functions~:
+
+#+begin_src emacs-lisp
+(defun my-lin-macos-system-colors ()
+  (when (memq window-system '(mac ns))
+    (set-face-attribute 'lin-hl nil
+                        :background "selectedContentBackgroundColor")
+
+    ;; To also override the foreground (see `lin-override-foreground'):
+    (set-face-attribute 'lin-hl-override-fg nil
+                        :foreground "alternateSelectedControlTextColor"
+                        :background "selectedContentBackgroundColor")))
+
+(when (memq window-system '(mac ns))
+  (add-hook 'ns-system-appearance-change-functions #'my-lin-macos-system-colors))
+#+end_src
+
+If you want to use a different color than the macOS selection colors
+in dark mode, you can tweak this approach:
+
+#+begin_src emacs-lisp
+(defun my-lin--macos-mode-color (light dark)
+  "Use LIGHT or DARK color value, depending on macOS mode."
+  (if (eq ns-system-appearance 'light)
+      light
+    dark))
+
+(defun my-lin-custom-faces ()
+  (when (memq window-system '(mac ns))
+    (let ((bg (my-lin--macos-mode-color "selectedContentBackgroundColor" "#2a40b8"))
+          (fg (my-lin--macos-mode-color "alternateSelectedControlTextColor" "#ffffff")))
+      (set-face-attribute 'lin-hl nil :background bg)
+      (set-face-attribute 'lin-hl-override-fg nil :background bg :foreground fg))))
+
+(when (memq window-system '(mac ns))
+  (add-hook 'ns-system-appearance-change-functions #'my-lin-custom-faces))
+#+end_src
+
 * Acknowledgements
 :PROPERTIES:
 :CUSTOM_ID: h:0f80e78f-d6b3-42cd-8e49-7ac47fd2fa96
@@ -195,7 +266,7 @@ LIN is meant to be a collective effort.  Every bit of help matters.
 
 + Contributions to code or documentation :: Nicolas De Jaeghere.
 
-+ Ideas and user feedback :: Nicolas De Jaeghere.
++ Ideas and user feedback :: Christian Tietze, Nicolas De Jaeghere.
 
 * GNU Free Documentation License
 :PROPERTIES:
