@@ -189,8 +189,7 @@ switching between Modus Operandi and Vivendi):
 :END:
 
 On macOS, it is possible to use named system colors. For a list of
-available colors, see Apple's Human Interface Guidelines:
-https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
+available colors, see [[https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/][Apple's Human Interface Guidelines]].
 
 To use macOS's named colors for selections as LIN's background and
 foreground instead of specifying color values directly, tweak the two
