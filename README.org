@@ -57,7 +57,7 @@ included in the section entitled “GNU Free Documentation License.”
 modify this GNU manual.”
 #+end_quote
 
-* Overview LIN (lin.el)
+* Overview LIN
 :PROPERTIES:
 :CUSTOM_ID: h:aa71c6b7-4801-4aba-9bcb-f3309f9e4d87
 :END:
