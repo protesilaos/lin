@@ -129,14 +129,15 @@ Everything is in place to set up the package.
 (add-hook 'elfeed-search-mode-hook #'lin-mode)
 #+end_src
 
-Or for more mode hooks:
+To activate ~lin-mode~ on all modes where it makes sense:
 
 #+begin_src emacs-lisp
 (require 'lin)
-
-(dolist (hook '(elfeed-search-mode-hook notmuch-search-mode-hook))
-  (add-hook hook #'lin-mode))
+(lin-add-to-many-modes)
 #+end_src
+
+The customization option ~lin-foreign-hooks~ lets you configure the
+list of hooks affected by ~lin-add-to-many-modes~.
 
 Else invoke ~lin-mode~ interactively.
 
