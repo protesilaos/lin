@@ -72,6 +72,7 @@
     notmuch-search-mode-hook
     notmuch-tree-mode-hook
     org-agenda-mode-hook
+    ilist-mode-hook
     tabulated-list-mode-hook)
   "List of default hooks in which to use `lin-mode'.
 See also the user option `lin-override-foreground'.")
