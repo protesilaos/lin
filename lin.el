@@ -135,8 +135,8 @@ Used only when `lin-override-foreground' is non-nil."
     'mu4e-header-highlight-face)
    ;; Do not target `hl-line' directly, as it can be changed by
    ;; `hl-line-face'.
-   ((when (bound-and-true-p hl-line-face)
-      hl-line-face))
+   ((bound-and-true-p hl-line-face)
+      hl-line-face)
    (t
     'hl-line)))
 
