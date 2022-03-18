@@ -307,7 +307,7 @@ background attribute."
   "Cookie returned by `face-remap-add-relative'.")
 
 (defun lin--source-face ()
-  "Determine the source face, what to remap."
+  "Determine the source face: what to remap."
   (cond
    ((derived-mode-p 'mu4e-headers-mode)
     'mu4e-header-highlight-face)
