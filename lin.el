@@ -98,7 +98,8 @@
   :group 'convenience)
 
 (defcustom lin-mode-hooks
-  '(dired-mode-hook
+  '(bongo-mode-hook
+    dired-mode-hook
     elfeed-search-mode-hook
     git-rebase-mode-hook
     ibuffer-mode-hook
