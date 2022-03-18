@@ -144,7 +144,13 @@ Users can select one among `lin-red', `lin-green', `lin-yellow',
 `lin-yellow-override-fg', `lin-blue-override-fg',
 `lin-magenta-override-fg', `lin-cyan-override-fg',
 `lin-mac-override-fg', or any other face that preferably has a
-background attribute."
+background attribute.
+
+Set this user option with `customize-set-variable', the Custom
+UI, or equivalent.  It has a custom setter function which
+automatically sets things up when configured that way.  Users who
+prefer to use `setq' must run `lin-restart-mode-in-buffers'
+manually.  Consult its doc string."
   :type '(radio (face :tag "Red style" lin-red)
                 (face :tag "Green style" lin-green)
                 (face :tag "Yellow style" lin-yellow)
@@ -163,7 +169,7 @@ background attribute."
   :initialize #'custom-initialize-default
   :set (lambda (symbol value)
          (set-default symbol value)
-         (mapc #'lin--mode-restart (buffer-list)))
+         (lin-restart-mode-in-buffers))
   :group 'lin)
 
 ;;;; Faces
@@ -346,10 +352,15 @@ With optional non-nil REVERSE argument, remove those hooks."
       (add-hook hook #'lin-mode))))
 
 (defun lin--mode-restart (buffer)
-  "Return non-nil if `lin-mode' is enabled in BUFFER."
+  "Restart `lin-mode' if already enabled in BUFFER."
   (with-current-buffer buffer
     (when lin-mode
       (lin-mode 1))))
+
+(defun lin-restart-mode-in-buffers ()
+  "Restart `lin-mode' if already enabled in any buffer.
+This checks the `buffer-list'."
+  (mapc #'lin--mode-restart (buffer-list)))
 
 (provide 'lin)
 
