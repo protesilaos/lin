@@ -1,0 +1,67 @@
+#+TITLE: Change log of lin.el
+#+AUTHOR: Protesilaos Stavrou
+#+EMAIL: info@protesilaos.com
+#+OPTIONS: ':nil toc:nil num:nil author:nil email:nil
+
+This document contains the release notes for each tagged commit on the
+project's main git repository: <https://gitlab.com/protesilaos/lin>.
+
+The newest release is at the top.  For further details, please consult
+the manual: <https://protesilaos.com/emacs/lin>.
+
+* Version 0.2.0 on 2022-03-16
+
+Rewrote the entirety of =lin.el= to make the configuration easier and
+keep the code streamlined.  The gist is that now Lin automatically
+enables ~hl-line-mode~ in every mode implied by ~lin-mode-hooks~.  Here
+is how Lin should be set up henceforth:
+
+#+begin_src emacs-lisp
+(require 'lin)
+
+(setq lin-face 'lin-blue) ; check doc string for alternative styles
+
+(lin-setup) ; Either run this or change `lin-mode-hooks'
+
+(customize-set-variable
+ 'lin-mode-hooks ; do not use `setq' with this; `customize-set-variable' runs `lin-setup' automatically
+ '(dired-mode-hook
+   elfeed-search-mode-hook
+   git-rebase-mode-hook
+   ibuffer-mode-hook
+   ilist-mode-hook
+   ledger-report-mode-hook
+   log-view-mode-hook
+   magit-log-mode-hook
+   mu4e-headers-mode
+   notmuch-search-mode-hook
+   notmuch-tree-mode-hook
+   occur-mode-hook
+   org-agenda-mode-hook
+   tabulated-list-mode-hook))
+#+end_src
+
+The manual has been updated to reflect those changes:
+<https://protesilaos.com/emacs/lin>.
+
+Thanks to:
+
++ Christian Tietze for showing how the Lin face can use colors from the
+  macOS palette.  The original contribution was in merge request 2:
+  <https://gitlab.com/protesilaos/lin/-/merge_requests/2>.  Now we
+  provide the ~lin-mac~ and ~lin-mac-override-fg~ faces.  These can be
+  assigned as a value to the user option ~lin-face~.
+
++ Damien Cassou for suggesting that Lin sets itself up for a list of
+  mode hooks.  The original contribution was in merge request 3:
+  <https://gitlab.com/protesilaos/lin/-/merge_requests/3>.  It has now
+  been rewritten as the ~lin-mode-hooks~ user option, though the idea is
+  the same.
+
++ Federico Stilman for adding ~mu4e-headers-mode~ to the list that
+  Damien had provided and which now lives as ~lin-mode-hooks~.
+  Federico's contribution was sent as a patch via email.
+
+* Version 0.1.0 on 2022-03-14
+
+Initial release of the package.  Please read the manual.
