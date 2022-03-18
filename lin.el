@@ -160,6 +160,10 @@ background attribute."
                 (face :tag "Cyan style that also overrides the underlying foreground" lin-cyan-override-fg)
                 (face :tag "macOS style that also overrides the underlying foreground" lin-mac-override-fg)
                 (face :tag "Other face (must have a background)"))
+  :initialize #'custom-initialize-default
+  :set (lambda (symbol value)
+         (set-default symbol value)
+         (mapc #'lin--mode-restart (buffer-list)))
   :group 'lin)
 
 ;;;; Faces
@@ -340,6 +344,12 @@ With optional non-nil REVERSE argument, remove those hooks."
         (remove-hook hook #'lin-mode))
     (dolist (hook lin-mode-hooks)
       (add-hook hook #'lin-mode))))
+
+(defun lin--mode-restart (buffer)
+  "Return non-nil if `lin-mode' is enabled in BUFFER."
+  (with-current-buffer buffer
+    (when lin-mode
+      (lin-mode 1))))
 
 (provide 'lin)
 
