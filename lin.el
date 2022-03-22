@@ -137,7 +137,7 @@ doc string."
   :group 'lin)
 
 (defcustom lin-face 'lin-blue
-  "Face to use for the pulse line.
+  "Face to use for the highlighted line.
 Users can select one among `lin-red', `lin-green', `lin-yellow',
 `lin-blue' (default), `lin-magenta', `lin-cyan', `lin-mac',
 `lin-red-override-fg', `lin-green-override-fg',
