@@ -328,7 +328,7 @@ manually.  Consult its doc string."
 
 (define-minor-mode lin-mode
   "Enable `hl-line-mode' and remap its face to `lin-face'."
-  :local t
+  :global nil
   :init-value nil
   (if lin-mode
       (progn
