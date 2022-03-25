@@ -330,6 +330,7 @@ manually.  Consult its doc string."
   "Enable `hl-line-mode' and remap its face to `lin-face'."
   :global nil
   :init-value nil
+  :lighter " -L-"
   (if lin-mode
       (progn
         (setq lin--cookie
