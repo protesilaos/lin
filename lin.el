@@ -327,11 +327,14 @@ manually.  Consult its doc string."
    (t
     'hl-line)))
 
+(defvar lin-lighter " -L-"
+  "Mode line lighter for `lin-mode'.")
+
 (define-minor-mode lin-mode
   "Enable `hl-line-mode' and remap its face to `lin-face'."
   :global nil
   :init-value nil
-  :lighter " -L-"
+  :lighter lin-lighter
   (if lin-mode
       (progn
         (setq lin--cookie
