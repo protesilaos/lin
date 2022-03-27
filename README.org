@@ -80,15 +80,12 @@ more of a reminder of the point's location on the vertical axis.
 
 #+findex: lin-mode
 #+vindex: lin-mode-hooks
-#+findex: lin-setup
-~lin-mode~ enables ~hl-line-mode~ by adding it to every hook specified
-in the user option ~lin-mode-hooks~.  Users are advised to configure
-that variable with ~customize-set-variable~, or the Custom UI, or
-equivalent as it has a function which automatically sets up Lin.  Those
-who prefer to set values with ~setq~ must handle the process manually,
-by using the ~lin-setup~ function.
-
 #+vindex: lin-face
+~lin-mode~ enables ~hl-line-mode~ in the current buffer and remaps the
+appropriate face to the ~lin-face~.  The ~lin-global-mode~ follows the
+same principle, though it applies to all hooks specified in the user
+option ~lin-mode-hooks~.
+
 #+vindex: lin-blue
 #+vindex: lin-red
 #+vindex: lin-green
@@ -104,7 +101,7 @@ by using the ~lin-setup~ function.
 #+vindex: lin-magenta-override-fg
 #+vindex: lin-cyan-override-fg
 #+vindex: lin-mac-override-fg
-Users can selected their preferred style by customizing the user option
+Users can select their preferred style by customizing the user option
 ~lin-face~.  Options include the faces ~lin-red~, ~lin-green~,
 ~lin-yellow~, ~lin-blue~ (default), ~lin-magenta~, ~lin-cyan~,
 ~lin-mac~, ~lin-red-override-fg~, ~lin-green-override-fg~,
@@ -119,13 +116,24 @@ the others only specify a background attribute.
 :PROPERTIES:
 :CUSTOM_ID: h:7b68abd3-a854-4b72-b704-05ca013dfa7f
 :END:
-#+cindex: Install Lin
+#+cindex: Installation instructions
 
-LIN is not in any package archive for the time being, though I plan to
-submit it to GNU ELPA (as such, any non-trivial patches require
-copyright assignment to the Free Software Foundation).  Users can rely
-on =straight.el=, =quelpa=, or equivalent to fetch the source.  Below are
-the essentials for those who prefer the manual method.
+** COMMENT GNU ELPA package
+:PROPERTIES:
+:CUSTOM_ID: h:9379f7d7-9f78-40b8-8d30-cceb462cd41f
+:END:
+
+The package is available as =lin=.  Simply do:
+
+: M-x package-refresh-contents
+: M-x package-install
+
+And search for it.
+
+** Manual installation
+:PROPERTIES:
+:CUSTOM_ID: h:494b6abd-e3d4-4622-b428-272eae0c7779
+:END:
 
 Assuming your Emacs files are found in =~/.emacs.d/=, execute the
 following commands in a shell prompt:
@@ -139,7 +147,7 @@ mkdir manual-packages
 # Go to the new directory
 cd manual-packages
 
-# Clone this repo and name it "lin"
+# Clone this repo, naming it "lin"
 git clone https://gitlab.com/protesilaos/lin.git lin
 #+end_src
 
@@ -163,24 +171,28 @@ Everything is in place to set up the package.
 
 (setq lin-face 'lin-blue) ; check doc string for alternative styles
 
-(lin-setup) ; Either run this or change `lin-mode-hooks'
+;; You can use this to live update the face:
+;;
+;; (customize-set-variable 'lin-face 'lin-green)
 
-(customize-set-variable
- 'lin-mode-hooks ; do not use `setq' with this; `customize-set-variable' runs `lin-setup' automatically
- '(dired-mode-hook
-   elfeed-search-mode-hook
-   git-rebase-mode-hook
-   ibuffer-mode-hook
-   ilist-mode-hook
-   ledger-report-mode-hook
-   log-view-mode-hook
-   magit-log-mode-hook
-   mu4e-headers-mode
-   notmuch-search-mode-hook
-   notmuch-tree-mode-hook
-   occur-mode-hook
-   org-agenda-mode-hook
-   tabulated-list-mode-hook))
+(setq lin-mode-hooks
+      '(bongo-mode-hook
+        dired-mode-hook
+        elfeed-search-mode-hook
+        git-rebase-mode-hook
+        ibuffer-mode-hook
+        ilist-mode-hook
+        ledger-report-mode-hook
+        log-view-mode-hook
+        magit-log-mode-hook
+        mu4e-headers-mode
+        notmuch-search-mode-hook
+        notmuch-tree-mode-hook
+        occur-mode-hook
+        org-agenda-mode-hook
+        tabulated-list-mode-hook))
+
+(lin-global-mode 1)
 #+end_src
 
 * Acknowledgements

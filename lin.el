@@ -41,15 +41,13 @@
 ;; highlight is more of a reminder of the point's location on the
 ;; vertical axis.
 ;;
-;; `lin-mode' enables `hl-line-mode' by adding it to every hook
-;; specified in the user option `lin-mode-hooks'.  Users are advised to
-;; configure that variable with `customize-set-variable', or the Custom
-;; UI, or equivalent as it has a function which automatically sets up
-;; Lin.  Those who prefer to set values with `setq' must handle the
-;; process manually, by using the `lin-setup' function.
+;; `lin-mode' enables `hl-line-mode' in the current buffer and remaps
+;; the appropriate face to the `lin-face'.  The `lin-global-mode'
+;; follows the same principle, though it applies to all hooks specified
+;; in the user option `lin-mode-hooks'.
 ;;
-;; Users can selected their preferred style by customizing the user
-;; option `lin-face'.  Options include the faces `lin-red', `lin-green',
+;; Users can select their preferred style by customizing the user option
+;; `lin-face'.  Options include the faces `lin-red', `lin-green',
 ;; `lin-yellow', `lin-blue' (default), `lin-magenta', `lin-cyan',
 ;; `lin-mac', `lin-red-override-fg', `lin-green-override-fg',
 ;; `lin-yellow-override-fg', `lin-blue-override-fg',
@@ -58,31 +56,6 @@
 ;; background attribute.  The Lin faces with the =-override-fg= suffix
 ;; set a foreground value which replaces that of the underlying text.
 ;; Whereas the others only specify a background attribute.
-;;
-;; Sample configuration:
-;;
-;;     (require 'lin)
-;;
-;;     (setq lin-face 'lin-blue)
-;;
-;;     (lin-setup)
-;;
-;;     (customize-set-variable
-;;      'lin-mode-hooks
-;;      '(dired-mode-hook
-;;        elfeed-search-mode-hook
-;;        git-rebase-mode-hook
-;;        ibuffer-mode-hook
-;;        ilist-mode-hook
-;;        ledger-report-mode-hook
-;;        log-view-mode-hook
-;;        magit-log-mode-hook
-;;        mu4e-headers-mode
-;;        notmuch-search-mode-hook
-;;        notmuch-tree-mode-hook
-;;        occur-mode-hook
-;;        org-agenda-mode-hook
-;;        tabulated-list-mode-hook))
 ;;
 ;; Consult the manual for further details.  Or visit the documentation's
 ;; web page: <https://protesilaos.com/emacs/lin>.
@@ -114,19 +87,13 @@
     occur-mode-hook
     org-agenda-mode-hook
     tabulated-list-mode-hook)
-  "List of hooks that should enable `lin-mode'.
+  "List of hooks that should enable Lin.
 
-When Lin is set up, it activates `hl-line-mode' and remaps its
-face to `lin-face'.  This makes it possible to distinguish
-between the two use-cases of permanent line highlighting: (i)
-gentle reminder of where the point is while editing, (ii) current
-selection.
-
-Set this user option with `customize-set-variable', the Custom
-UI, or equivalent.  It has a custom setter function which
-automatically sets things up when configured that way.  Users who
-prefer to use `setq' must run `lin-setup' manually.  Consult its
-doc string."
+When Lin is set up with either `lin-mode' or `lin-global-mode',
+it activates `hl-line-mode' and remaps its face to `lin-face'.
+This makes it possible to distinguish between the two use-cases
+of permanent line highlighting: (i) gentle reminder of where the
+point is while editing, (ii) current selection."
   :type '(repeat variable)
   :initialize #'custom-initialize-default
   :set (lambda (symbol value)
@@ -148,10 +115,9 @@ Users can select one among `lin-red', `lin-green', `lin-yellow',
 background attribute.
 
 Set this user option with `customize-set-variable', the Custom
-UI, or equivalent.  It has a custom setter function which
-automatically sets things up when configured that way.  Users who
-prefer to use `setq' must run `lin-restart-mode-in-buffers'
-manually.  Consult its doc string."
+UI, or equivalent.  It has a custom setter function which live
+updates the face.  Users who prefer to use `setq' must run
+`lin-enable-mode-in-buffers' manually.  Consult its doc string."
   :type '(radio (face :tag "Red style" lin-red)
                 (face :tag "Green style" lin-green)
                 (face :tag "Yellow style" lin-yellow)
@@ -170,7 +136,7 @@ manually.  Consult its doc string."
   :initialize #'custom-initialize-default
   :set (lambda (symbol value)
          (set-default symbol value)
-         (lin-restart-mode-in-buffers))
+         (lin-enable-mode-in-buffers))
   :group 'lin)
 
 ;;;; Faces
@@ -327,14 +293,10 @@ manually.  Consult its doc string."
    (t
     'hl-line)))
 
-(defvar lin-lighter " -L-"
-  "Mode line lighter for `lin-mode'.")
-
 (define-minor-mode lin-mode
   "Enable `hl-line-mode' and remap its face to `lin-face'."
   :global nil
   :init-value nil
-  :lighter lin-lighter
   (if lin-mode
       (progn
         (setq lin--cookie
@@ -342,6 +304,18 @@ manually.  Consult its doc string."
         (hl-line-mode 1))
     (face-remap-remove-relative lin--cookie)
     (hl-line-mode -1)))
+
+;;;###autoload
+(define-minor-mode lin-global-mode
+  "Like `lin-mode' but sets things up for all `lin-mode-hooks'."
+  :global t
+  :init-value nil
+  (if lin-global-mode
+      (progn
+        (lin-setup)
+        (lin-enable-mode-in-buffers))
+    (lin-setup :reverse)
+    (lin-disable-mode-in-buffers)))
 
 (defun lin-setup (&optional reverse)
   "Set up Lin for select mode hooks.
@@ -356,16 +330,32 @@ With optional non-nil REVERSE argument, remove those hooks."
     (dolist (hook lin-mode-hooks)
       (add-hook hook #'lin-mode))))
 
-(defun lin--mode-restart (buffer)
-  "Restart `lin-mode' if already enabled in BUFFER."
+(defun lin--mode-enable (buffer)
+  "Enable `lin-mode' in BUFFER if appropriate."
   (with-current-buffer buffer
-    (when lin-mode
+    (when (or lin-mode
+              (memq (intern (format "%s-hook" major-mode)) lin-mode-hooks))
       (lin-mode 1))))
 
-(defun lin-restart-mode-in-buffers ()
+(defun lin--mode-disable (buffer)
+  "Disable `lin-mode' if already enabled in BUFFER."
+  (with-current-buffer buffer
+    (when lin-mode
+      (lin-mode -1))))
+
+(defun lin-enable-mode-in-buffers ()
   "Restart `lin-mode' if already enabled in any buffer.
-This checks the `buffer-list'."
-  (mapc #'lin--mode-restart (buffer-list)))
+Do so by checking the `buffer-list'."
+  (mapc #'lin--mode-enable (buffer-list)))
+
+(define-obsolete-function-alias
+  'lin-restart-mode-in-buffers
+  'lin-enable-mode-in-buffers "0.3.0")
+
+(defun lin-disable-mode-in-buffers ()
+  "Restart `lin-mode' if already enabled in any buffer.
+Do so by checking the `buffer-list'."
+  (mapc #'lin--mode-disable (buffer-list)))
 
 (provide 'lin)
 
