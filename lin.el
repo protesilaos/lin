@@ -99,9 +99,9 @@ point is while editing, (ii) current selection."
   :set (lambda (symbol value)
          (if (eq value (default-value symbol))
              (set-default symbol value)
-           (lin-setup 'reverse)
+           (lin--setup 'reverse)
            (set-default symbol value)
-           (lin-setup)))
+           (lin--setup)))
   :group 'lin)
 
 (defcustom lin-face 'lin-blue
@@ -312,12 +312,12 @@ updates the face.  Users who prefer to use `setq' must run
   :init-value nil
   (if lin-global-mode
       (progn
-        (lin-setup)
+        (lin--setup)
         (lin-enable-mode-in-buffers))
-    (lin-setup :reverse)
+    (lin--setup :reverse)
     (lin-disable-mode-in-buffers)))
 
-(defun lin-setup (&optional reverse)
+(defun lin--setup (&optional reverse)
   "Set up Lin for select mode hooks.
 
 This adds `lin-mode' and `hl-line-mode' to every hook in
@@ -329,6 +329,8 @@ With optional non-nil REVERSE argument, remove those hooks."
         (remove-hook hook #'lin-mode))
     (dolist (hook lin-mode-hooks)
       (add-hook hook #'lin-mode))))
+
+(define-obsolete-function-alias 'lin--setup 'lin--setup "0.3.0")
 
 (defun lin--mode-enable (buffer)
   "Enable `lin-mode' in BUFFER if appropriate."
