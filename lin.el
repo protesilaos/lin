@@ -330,7 +330,7 @@ With optional non-nil REVERSE argument, remove those hooks."
     (dolist (hook lin-mode-hooks)
       (add-hook hook #'lin-mode))))
 
-(define-obsolete-function-alias 'lin--setup 'lin--setup "0.3.0")
+(define-obsolete-function-alias 'lin-setup 'lin--setup "0.3.0")
 
 (defun lin--mode-enable (buffer)
   "Enable `lin-mode' in BUFFER if appropriate."
