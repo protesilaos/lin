@@ -346,7 +346,7 @@ With optional non-nil REVERSE argument, remove those hooks."
       (lin-mode -1))))
 
 (defun lin-enable-mode-in-buffers ()
-  "Restart `lin-mode' if already enabled in any buffer.
+  "Enable (restart) `lin-mode' if already enabled in any buffer.
 Do so by checking the `buffer-list'."
   (mapc #'lin--mode-enable (buffer-list)))
 
