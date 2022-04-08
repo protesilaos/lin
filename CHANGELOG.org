@@ -3,11 +3,64 @@
 #+EMAIL: info@protesilaos.com
 #+OPTIONS: ':nil toc:nil num:nil author:nil email:nil
 
-This document contains the release notes for each tagged commit on the
-project's main git repository: <https://gitlab.com/protesilaos/lin>.
-
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/lin>.
+
+* Version 0.3.0 on 2022-04-08
+
++ Changed the source repository from GitLab to SourceHut:
+  <https://git.sr.ht/~protesilaos/lin>.  Use the mailing list to start a
+  discussion, report a bug, send a patch, etc.:
+  <https://lists.sr.ht/~protesilaos/lin>.  The GitLab URL will serve as
+  a mirror from now on (a GitHub mirror is still available and will
+  remain that way).
+
++ Introduced a buffer-local minor mode as well as its global equivalent:
+  ~lin-mode~ and ~lin-global-mode~.  This makes it easier to set up Lin
+  in user init files and/or toggle it on demand.  The following shows
+  how the package can be used:
+
+  #+begin_src emacs-lisp
+(require 'lin)
+
+(setq lin-face 'lin-blue) ; check doc string for alternative styles
+
+;; You can use this to live update the face:
+;;
+;; (customize-set-variable 'lin-face 'lin-green)
+
+(setq lin-mode-hooks
+      '(bongo-mode-hook
+        dired-mode-hook
+        elfeed-search-mode-hook
+        git-rebase-mode-hook
+        ibuffer-mode-hook
+        ilist-mode-hook
+        ledger-report-mode-hook
+        log-view-mode-hook
+        magit-log-mode-hook
+        mu4e-headers-mode
+        notmuch-search-mode-hook
+        notmuch-tree-mode-hook
+        occur-mode-hook
+        org-agenda-mode-hook
+        tabulated-list-mode-hook))
+
+(lin-global-mode 1)
+  #+end_src
+
++ The ~lin-face~ now has a custom setter which automatically updates its
+  appearance in all buffers where ~lin-mode~ is enabled.  Users might
+  thus prefer to set its value with ~customize-set-variable~ in order to
+  find the style they like the most.  Otherwise setting the value with
+  ~setq~ is just fine for stable configurations.  If, in that case, the
+  user wants to update the face, they must invoke ~revert-buffer~ or
+  equivalent (e.g. type =g= in Dired with the default key bindings) or
+  evaluate the function ~lin-enable-mode-in-buffers~.
+
++ The user option ~lin-mode-hooks~ now includes ~bongo-mode-hook~ (from
+  the =bongo= package).  Its default value is shown in the sample code
+  above.
 
 * Version 0.2.0 on 2022-03-16
 
