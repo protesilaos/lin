@@ -77,6 +77,7 @@
     dired-mode-hook
     elfeed-search-mode-hook
     git-rebase-mode-hook
+    grep-mode-hook
     ibuffer-mode-hook
     ilist-mode-hook
     ledger-report-mode-hook
@@ -87,6 +88,7 @@
     notmuch-tree-mode-hook
     occur-mode-hook
     org-agenda-mode-hook
+    proced-mode-hook
     tabulated-list-mode-hook)
   "List of hooks that should enable Lin.
 
