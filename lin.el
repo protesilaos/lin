@@ -294,6 +294,7 @@ updates the face.  Users who prefer to use `setq' must run
    (t
     'hl-line)))
 
+;;;###autoload
 (define-minor-mode lin-mode
   "Enable `hl-line-mode' and remap its face to `lin-face'."
   :global nil
