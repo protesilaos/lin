@@ -180,6 +180,7 @@ Everything is in place to set up the package.
         dired-mode-hook
         elfeed-search-mode-hook
         git-rebase-mode-hook
+        grep-mode-hook
         ibuffer-mode-hook
         ilist-mode-hook
         ledger-report-mode-hook
@@ -190,6 +191,7 @@ Everything is in place to set up the package.
         notmuch-tree-mode-hook
         occur-mode-hook
         org-agenda-mode-hook
+        proced-mode-hook
         tabulated-list-mode-hook))
 
 (lin-global-mode 1)
