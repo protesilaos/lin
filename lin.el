@@ -268,12 +268,15 @@ updates the face.  Users who prefer to use `setq' must run
   '((((type ns))
      ;; <https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/>.
      :background "selectedContentBackgroundColor" :extend t)
+    (((type mac))
+     :background "mac:selectedContentBackgroundColor" :extend t)
     (t :inherit lin-blue))
   "Alternative macOS-style face for `lin-face'."
   :group 'lin-faces)
 
 (defface lin-mac-override-fg
-  '((t :inherit lin-mac :foreground "alternateSelectedControlTextColor"))
+  '((((type ns)) :inherit lin-mac :foreground "alternateSelectedControlTextColor")
+    (((type mac)) :inherit lin-mac :foreground "mac:alternateSelectedControlTextColor"))
   "Like `lin-mac' but also sets a foreground."
   :group 'lin-faces)
 
