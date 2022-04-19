@@ -208,7 +208,7 @@ Lin is meant to be a collective effort.  Every bit of help matters.
 + Author/maintainer :: Protesilaos Stavrou.
 
 + Contributions to code or documentation :: Christian Tietze, Damien
-  Cassou, Federico Stilman, Nicolas De Jaeghere.
+  Cassou, Federico Stilman, Kai von Fintel, Nicolas De Jaeghere.
 
 * GNU Free Documentation License
 :PROPERTIES:
