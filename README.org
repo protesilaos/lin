@@ -35,6 +35,10 @@ commit, is explicitly marked as such.
 
 Current development target is {{{development-version}}}.
 
++ Homepage: https://protesilaos.com/emacs/lin.
++ Git repository: https://git.sr.ht/~protesilaos/lin.
++ Mailing list: https://lists.sr.ht/~protesilaos/lin.
+
 #+toc: headlines 8 insert TOC here, with eight headline levels
 
 * COPYING
