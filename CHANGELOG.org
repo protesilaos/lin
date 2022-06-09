@@ -6,6 +6,36 @@
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/lin>.
 
+* Version 0.4.0 on 2022-06-09
+
++ The official Git repository is now hosted on SourceHut.  Mirrors are
+  available on GitHub and GitLab---users can open issues there if they
+  find it difficult to use the mailing list.  The sources:
+
+  - Official manual: <https://protesilaos.com/emacs/lin>
+  - Change log: <https://protesilaos.com/emacs/lin-changelog>
+  - Git repo on SourceHut: <https://git.sr.ht/~protesilaos/lin>
+    + Mirrors:
+      - GitHub: <https://github.com/protesilaos/lin>
+      - GitLab: <https://gitlab.com/protesilaos/lin>
+  - Mailing list: <https://lists.sr.ht/~protesilaos/lin>
+
++ The ~grep-mode-hook~ and ~proced-mode-hook~ are included in the
+  default value of the user option ~lin-mode-hooks~.  This practically
+  means that Lin will be active in the implied modes when
+  ~lin-global-mode~ is enabled.  Thanks to Nicolas De Jaeghere for the
+  patch (Nicolas has assigned copyright to the Free Software
+  Foundation).
+
++ The faces that leverage the macOS palette (~lin-mac{,-override-fg}~)
+  are made to work with Mitsuharu Yamamoto's =emacs-mac= port:
+  <https://bitbucket.org/mituharu/emacs-mac/src/master/>.  They read the
+  =mac= display specification in addition to the =ns= one.  Remember
+  that you can specify the desired face as the value of ~lin-face~ (its
+  doc string documents all the stylistic options we provide).  Thanks to
+  Kai von Fintel for the patch (the change is well below the ~15 line
+  threshold for copyright assignment).
+
 * Version 0.3.0 on 2022-04-08
 
 + Changed the source repository from GitLab to SourceHut:
