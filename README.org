@@ -206,6 +206,9 @@ Everything is in place to set up the package.
 (lin-global-mode 1)
 #+end_src
 
+Check out Christian Tietze's blog post on integrating Lin with Neotree:
+<https://christiantietze.de/posts/2022/03/hl-line-priority/>.
+
 * Acknowledgements
 :PROPERTIES:
 :CUSTOM_ID: h:0f80e78f-d6b3-42cd-8e49-7ac47fd2fa96
