@@ -67,8 +67,6 @@
 (require 'face-remap)
 (require 'hl-line)
 
-(make-obsolete 'lin--default-foreign-hooks 'lin-mode-hooks "0.2.0")
-
 (defgroup lin ()
   "Make `hl-line' appropriate for selection UIs."
   :group 'convenience)
