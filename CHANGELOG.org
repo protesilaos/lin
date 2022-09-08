@@ -6,6 +6,42 @@
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/lin>.
 
+* Version 1.0.0 on 2022-09-08
+
++ Clarified the doc string of the user option ~lin-mode-hooks~.  This
+  variable specifies the list of hooks that ~lin-global-mode~ will use
+  to apply its effect.  Lin enables ~hl-line-mode~ in the given buffer
+  and remaps its face to the value of the ~lin-face~ user option.
+
++ Added ~pdf-outline-buffer-mode-hook~ (from the =pdf-tools= package) to
+  the user option ~lin-mode-hooks~.  Thanks to Gautier Ponsinet for the
+  patch which was sent to my personal email.  The change is below the
+  ~15 line threshold and thus requires no copyright assignment to the
+  Free Software Foundation.
+
++ Named the mailing list address as the =Maintainer:= of Lin.  Together
+  with the other package headers, they help the user find our primary
+  sources and/or communication channels.  This change conforms with work
+  being done upstream in package.el by Philip Kaludercic.  I was
+  informed about it here:
+  <https://lists.sr.ht/~protesilaos/general-issues/%3C875ykl84yi.fsf%40posteo.net%3E>.
+
++ Made all user-facing variables specify the package version that
+  introduced them or last affected their specification.  This
+  information is presented in Help buffers.
+
++ Configured the Lin group in Custom UI buffers to show a link to the
+  package's Info manual.  Again, this helps the user find information
+  about Lin.
+
++ Removed old forms that rendered obsolete certain functions or
+  variables.  This keeps the code base small and focused on the current
+  feature set.
+
+The switch to version =1.0.0= is mostly symbolic.  Lin has been stable
+and feature-complete practically since its inception.  This change shows
+that most (all?) of the work has been accomplished.
+
 * Version 0.4.0 on 2022-06-09
 
 + The official Git repository is now hosted on SourceHut.  Mirrors are

@@ -6,7 +6,7 @@
 ;; Maintainer: Lin Development <~protesilaos/lin@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/lin
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/lin
-;; Version: 0.4.0
+;; Version: 1.0.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: convenience, faces, theme
 
@@ -105,7 +105,7 @@ editing, and (ii) current selection."
            (lin--setup 'reverse)
            (set-default symbol value)
            (lin--setup)))
-  :package-version '(lin . "0.5.0")
+  :package-version '(lin . "1.0.0")
   :group 'lin)
 
 (defcustom lin-face 'lin-blue
