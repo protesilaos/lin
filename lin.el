@@ -91,13 +91,12 @@
     pdf-outline-buffer-mode-hook
     proced-mode-hook
     tabulated-list-mode-hook)
-  "List of hooks that should enable Lin.
-
-When Lin is set up with either `lin-mode' or `lin-global-mode',
-it activates `hl-line-mode' and remaps its face to `lin-face'.
-This makes it possible to distinguish between the two use-cases
-of permanent line highlighting: (i) gentle reminder of where the
-point is while editing, (ii) current selection."
+  "List of hooks that should be used by the `lin-global-mode'.
+Lin activates `hl-line-mode' and remaps its face to `lin-face'.
+This makes it possible to tweak the `lin-face' in order to
+distinguish between the two use-cases of permanent line
+highlighting: (i) gentle reminder of where the point is while
+editing, and (ii) current selection."
   :type '(repeat variable)
   :initialize #'custom-initialize-default
   :set (lambda (symbol value)
