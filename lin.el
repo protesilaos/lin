@@ -105,6 +105,7 @@ point is while editing, (ii) current selection."
            (lin--setup 'reverse)
            (set-default symbol value)
            (lin--setup)))
+  :package-version '(lin . "0.5.0")
   :group 'lin)
 
 (defcustom lin-face 'lin-blue
@@ -140,6 +141,7 @@ updates the face.  Users who prefer to use `setq' must run
   :set (lambda (symbol value)
          (set-default symbol value)
          (lin-enable-mode-in-buffers))
+  :package-version '(lin . "0.3.0")
   :group 'lin)
 
 ;;;; Faces
@@ -156,6 +158,7 @@ updates the face.  Users who prefer to use `setq' must run
      :background "#500f0f")
     (t :background "red"))
   "Alternative red face for `lin-face'."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-red-override-fg
@@ -165,6 +168,7 @@ updates the face.  Users who prefer to use `setq' must run
     (((background dark))
      :foreground "white"))
   "Like `lin-red' but also sets a foreground."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-green
@@ -175,6 +179,7 @@ updates the face.  Users who prefer to use `setq' must run
      :background "#0f300f")
     (t :background "green"))
   "Alternative green face for `lin-face'."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-green-override-fg
@@ -184,6 +189,7 @@ updates the face.  Users who prefer to use `setq' must run
     (((background dark))
      :foreground "white"))
   "Like `lin-green' but also sets a foreground."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-yellow
@@ -194,6 +200,7 @@ updates the face.  Users who prefer to use `setq' must run
      :background "#412200")
     (t :background "yellow"))
   "Alternative yellow face for `lin-face'."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-yellow-override-fg
@@ -203,6 +210,7 @@ updates the face.  Users who prefer to use `setq' must run
     (((background dark))
      :foreground "white"))
   "Like `lin-yellow' but also sets a foreground."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-blue
@@ -213,6 +221,7 @@ updates the face.  Users who prefer to use `setq' must run
      :background "#002460")
     (t :background "blue"))
   "Alternative blue face for `lin-face'."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-blue-override-fg
@@ -222,6 +231,7 @@ updates the face.  Users who prefer to use `setq' must run
     (((background dark))
      :foreground "white"))
   "Like `lin-blue' but also sets a foreground."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-magenta
@@ -232,6 +242,7 @@ updates the face.  Users who prefer to use `setq' must run
      :background "#401d40")
     (t :background "magenta"))
   "Alternative magenta face for `lin-face'."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-magenta-override-fg
@@ -241,6 +252,7 @@ updates the face.  Users who prefer to use `setq' must run
     (((background dark))
      :foreground "white"))
   "Like `lin-magenta' but also sets a foreground."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-cyan
@@ -251,6 +263,7 @@ updates the face.  Users who prefer to use `setq' must run
      :background "#002f3f")
     (t :background "cyan"))
   "Alternative cyan face for `lin-face'."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 (defface lin-cyan-override-fg
@@ -260,6 +273,7 @@ updates the face.  Users who prefer to use `setq' must run
     (((background dark))
      :foreground "white"))
   "Like `lin-cyan' but also sets a foreground."
+  :package-version '(lin . "0.2.0")
   :group 'lin-faces)
 
 ;; TODO 2022-03-18: Can we find all system styles?  Then we can rename
@@ -272,12 +286,14 @@ updates the face.  Users who prefer to use `setq' must run
      :background "mac:selectedContentBackgroundColor" :extend t)
     (t :inherit lin-blue))
   "Alternative macOS-style face for `lin-face'."
+  :package-version '(lin . "0.4.0")
   :group 'lin-faces)
 
 (defface lin-mac-override-fg
   '((((type ns)) :inherit lin-mac :foreground "alternateSelectedControlTextColor")
     (((type mac)) :inherit lin-mac :foreground "mac:alternateSelectedControlTextColor"))
   "Like `lin-mac' but also sets a foreground."
+  :package-version '(lin . "0.4.0")
   :group 'lin-faces)
 
 ;;;; Lin setup
