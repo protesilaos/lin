@@ -29,9 +29,14 @@ commit, is explicitly marked as such.
 
 Current development target is {{{development-version}}}.
 
-+ Homepage: https://protesilaos.com/emacs/lin.
-+ Git repository: https://git.sr.ht/~protesilaos/lin.
-+ Mailing list: https://lists.sr.ht/~protesilaos/lin.
++ Package name (GNU ELPA): =lin=
++ Official manual: <https://protesilaos.com/emacs/lin>
++ Change log: <https://protesilaos.com/emacs/lin-changelog>
++ Git repo on SourceHut: <https://git.sr.ht/~protesilaos/lin>
+  - Mirrors:
+    + GitHub: <https://github.com/protesilaos/lin>
+    + GitLab: <https://gitlab.com/protesilaos/lin>
++ Mailing list: <https://lists.sr.ht/~protesilaos/lin>
 
 #+toc: headlines 8 insert TOC here, with eight headline levels
 
