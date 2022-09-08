@@ -369,8 +369,6 @@ With optional non-nil REVERSE argument, remove those hooks."
     (lin--setup-add-hooks)))
   (setq lin--setup-hooks lin-mode-hooks))
 
-(define-obsolete-function-alias 'lin-setup 'lin--setup "0.3.0")
-
 (defun lin--mode-enable (buffer)
   "Enable `lin-mode' in BUFFER if appropriate."
   (with-current-buffer buffer
@@ -388,10 +386,6 @@ With optional non-nil REVERSE argument, remove those hooks."
   "Enable (restart) `lin-mode' if already enabled in any buffer.
 Do so by checking the `buffer-list'."
   (mapc #'lin--mode-enable (buffer-list)))
-
-(define-obsolete-function-alias
-  'lin-restart-mode-in-buffers
-  'lin-enable-mode-in-buffers "0.3.0")
 
 (defun lin-disable-mode-in-buffers ()
   "Restart `lin-mode' if already enabled in any buffer.
