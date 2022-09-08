@@ -55,7 +55,7 @@
 ;; `lin-yellow-override-fg', `lin-blue-override-fg',
 ;; `lin-magenta-override-fg', `lin-cyan-override-fg',
 ;; `lin-mac-override-fg', or any other face that preferably has a
-;; background attribute.  The Lin faces with the =-override-fg= suffix
+;; background attribute.  The Lin faces with the "-override-fg" suffix
 ;; set a foreground value which replaces that of the underlying text.
 ;; Whereas the others only specify a background attribute.
 ;;
