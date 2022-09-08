@@ -69,7 +69,8 @@
 
 (defgroup lin ()
   "Make `hl-line' appropriate for selection UIs."
-  :group 'convenience)
+  :group 'convenience
+  :link '(info-link "(lin) Top"))
 
 (defcustom lin-mode-hooks
   '(bongo-mode-hook
