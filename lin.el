@@ -83,7 +83,7 @@
     ledger-report-mode-hook
     log-view-mode-hook
     magit-log-mode-hook
-    mu4e-headers-mode
+    mu4e-headers-mode-hook
     notmuch-search-mode-hook
     notmuch-tree-mode-hook
     occur-mode-hook
