@@ -221,7 +221,7 @@ Lin is meant to be a collective effort.  Every bit of help matters.
 
 + Contributions to code or documentation :: Christian Tietze, Damien
   Cassou, Federico Stilman, Gautier Ponsinet, Kai von Fintel, Nicolas De
-  Jaeghere.
+  Jaeghere, Simon Pugnet.
 
 * GNU Free Documentation License
 :PROPERTIES:
