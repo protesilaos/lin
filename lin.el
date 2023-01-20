@@ -153,12 +153,12 @@ updates the face.  Users who prefer to use `setq' must run
 (defface lin-red
   '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
-     :background "#ffd3d3")
+     :background "#ffcfbf")
     (((class color) (min-colors 88) (background dark))
-     :background "#500f0f")
+     :background "#620f2a")
     (t :background "red"))
   "Alternative red face for `lin-face'."
-  :package-version '(lin . "0.2.0")
+  :package-version '(lin . "1.1.0")
   :group 'lin-faces)
 
 (defface lin-red-override-fg
@@ -174,12 +174,12 @@ updates the face.  Users who prefer to use `setq' must run
 (defface lin-green
   '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
-     :background "#bfeabf")
+     :background "#b3fabf")
     (((class color) (min-colors 88) (background dark))
-     :background "#0f300f")
+     :background "#00422a")
     (t :background "green"))
   "Alternative green face for `lin-face'."
-  :package-version '(lin . "0.2.0")
+  :package-version '(lin . "1.1.0")
   :group 'lin-faces)
 
 (defface lin-green-override-fg
@@ -195,12 +195,12 @@ updates the face.  Users who prefer to use `setq' must run
 (defface lin-yellow
   '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
-     :background "#ffecaa")
+     :background "#fff576")
     (((class color) (min-colors 88) (background dark))
-     :background "#412200")
+     :background "#4a4000")
     (t :background "yellow"))
   "Alternative yellow face for `lin-face'."
-  :package-version '(lin . "0.2.0")
+  :package-version '(lin . "1.1.0")
   :group 'lin-faces)
 
 (defface lin-yellow-override-fg
@@ -216,12 +216,12 @@ updates the face.  Users who prefer to use `setq' must run
 (defface lin-blue
   '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
-     :background "#c0e4ff")
+     :background "#ccdfff")
     (((class color) (min-colors 88) (background dark))
-     :background "#002460")
+     :background "#242679")
     (t :background "blue"))
   "Alternative blue face for `lin-face'."
-  :package-version '(lin . "0.2.0")
+  :package-version '(lin . "1.1.0")
   :group 'lin-faces)
 
 (defface lin-blue-override-fg
@@ -237,12 +237,12 @@ updates the face.  Users who prefer to use `setq' must run
 (defface lin-magenta
   '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
-     :background "#ffd9ff")
+     :background "#ffddff")
     (((class color) (min-colors 88) (background dark))
-     :background "#401d40")
+     :background "#552f5f")
     (t :background "magenta"))
   "Alternative magenta face for `lin-face'."
-  :package-version '(lin . "0.2.0")
+  :package-version '(lin . "1.1.0")
   :group 'lin-faces)
 
 (defface lin-magenta-override-fg
@@ -258,12 +258,12 @@ updates the face.  Users who prefer to use `setq' must run
 (defface lin-cyan
   '((default :foreground unspecified :underline nil :extend t)
     (((class color) (min-colors 88) (background light))
-     :background "#baeaf8")
+     :background "#bfefff")
     (((class color) (min-colors 88) (background dark))
-     :background "#002f3f")
+     :background "#004065")
     (t :background "cyan"))
   "Alternative cyan face for `lin-face'."
-  :package-version '(lin . "0.2.0")
+  :package-version '(lin . "1.1.0")
   :group 'lin-faces)
 
 (defface lin-cyan-override-fg
