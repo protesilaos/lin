@@ -73,7 +73,8 @@
   :link '(info-link "(lin) Top"))
 
 (defcustom lin-mode-hooks
-  '(bongo-mode-hook
+  '(archive-mode-hook
+    bongo-mode-hook
     dired-mode-hook
     elfeed-search-mode-hook
     git-rebase-mode-hook
@@ -90,7 +91,8 @@
     org-agenda-mode-hook
     pdf-outline-buffer-mode-hook
     proced-mode-hook
-    tabulated-list-mode-hook)
+    tabulated-list-mode-hook
+    tar-mode-hook)
   "List of hooks that should be used by the `lin-global-mode'.
 Lin activates `hl-line-mode' and remaps its face to `lin-face'.
 This makes it possible to tweak the `lin-face' in order to
