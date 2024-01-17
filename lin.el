@@ -3,9 +3,8 @@
 ;; Copyright (C) 2021-2024  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
-;; Maintainer: Lin Development <~protesilaos/lin@lists.sr.ht>
-;; URL: https://git.sr.ht/~protesilaos/lin
-;; Mailing-List: https://lists.sr.ht/~protesilaos/lin
+;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
+;; URL: https://github.com/protesilaos/lin
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: convenience, faces, theme
