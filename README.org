@@ -114,6 +114,13 @@ background attribute.  The Lin faces with the =-override-fg= suffix set
 a foreground value which replaces that of the underlying text.  Whereas
 the others only specify a background attribute.
 
+[ The ~lin-remap-cureent-line-number~ is part of {{{development-version}}}. ]
+
+#+vindex: lin-remap-cureent-line-number
+The user option ~lin-remap-cureent-line-number~ controls whether to
+apply the Lin style also to the currently highlighted line number.
+Line numbers come from the built-in ~display-line-numbers-mode~.
+
 * Installation
 :PROPERTIES:
 :CUSTOM_ID: h:7b68abd3-a854-4b72-b704-05ca013dfa7f

@@ -145,6 +145,13 @@ updates the face.  Users who prefer to use `setq' must run
   :package-version '(lin . "0.3.0")
   :group 'lin)
 
+(defcustom lin-remap-cureent-line-number t
+  "When non-nil, apply `lin-face' also to the current line number.
+Line numbers come from the `display-line-numbers-mode'."
+  :type 'boolean
+  :package-version '(lin . "1.1.0")
+  :group 'lin)
+
 ;;;; Faces
 
 (defgroup lin-faces ()
@@ -299,10 +306,13 @@ updates the face.  Users who prefer to use `setq' must run
 
 ;;;; Lin setup
 
-(defvar-local lin--cookie nil
-  "Cookie returned by `face-remap-add-relative'.")
+(defvar-local lin--hl-line-cookie nil
+  "Cookie returned by `face-remap-add-relative' for `hl-line' face.")
 
-(defun lin--source-face ()
+(defvar-local lin--line-number-current-line-cookie nil
+  "Cookie of `face-remap-add-relative' for `line-number-current-line' face.")
+
+(defun lin--hl-line-source-face ()
   "Determine the source face: what to remap."
   (cond
    ((derived-mode-p 'mu4e-headers-mode)
@@ -323,10 +333,12 @@ updates the face.  Users who prefer to use `setq' must run
   :init-value nil
   (if lin-mode
       (progn
-        (setq lin--cookie
-              (face-remap-add-relative (lin--source-face) lin-face))
+        (setq lin--hl-line-cookie (face-remap-add-relative (lin--hl-line-source-face) lin-face))
+        (when lin-remap-cureent-line-number
+          (setq lin--line-number-current-line-cookie (face-remap-add-relative 'line-number-current-line lin-face)))
         (hl-line-mode 1))
-    (face-remap-remove-relative lin--cookie)
+    (face-remap-remove-relative lin--hl-line-cookie)
+    (face-remap-remove-relative lin--line-number-current-line-cookie)
     (hl-line-mode -1)))
 
 ;;;###autoload
