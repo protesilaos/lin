@@ -145,7 +145,7 @@ updates the face.  Users who prefer to use `setq' must run
   :package-version '(lin . "0.3.0")
   :group 'lin)
 
-(defcustom lin-remap-cureent-line-number t
+(defcustom lin-remap-current-line-number t
   "When non-nil, apply `lin-face' also to the current line number.
 Line numbers come from the `display-line-numbers-mode'."
   :type 'boolean
@@ -334,7 +334,7 @@ Line numbers come from the `display-line-numbers-mode'."
   (if lin-mode
       (progn
         (setq lin--hl-line-cookie (face-remap-add-relative (lin--hl-line-source-face) lin-face))
-        (when lin-remap-cureent-line-number
+        (when lin-remap-current-line-number
           (setq lin--line-number-current-line-cookie (face-remap-add-relative 'line-number-current-line lin-face)))
         (hl-line-mode 1))
     (face-remap-remove-relative lin--hl-line-cookie)
