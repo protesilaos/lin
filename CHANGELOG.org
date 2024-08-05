@@ -6,6 +6,29 @@
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/lin>.
 
+* Version 1.1.0 on 2024-08-05
+
+The package is in a stable state. These are some quality-of-life
+refinements.
+
+- Updated the colour values of all the faces defined by ~lin~. They
+  now are a bit more vivid. The colours come from my ~modus-themes~.
+
+- Defined the user option ~lin-remap-current-line-number~, which is
+  set to a non-nil value by default. What it does is to apply the
+  colour of the currently highlighted line (per ~hl-line-mode~) to the
+  line number when ~display-line-numbers-mode~ is enabled.
+
+- Used the correct symbol for the Mu4e headers hook
+  (~mu4e-headers-mode-hook~ instead of ~mu4e-headers-mode~). Thanks to
+  Simon Pugnet for the contribution. The change is small, meaning that
+  Simon does not need to assign copyright to the Free Software
+  Foundation.
+
+- Added the ~archive-mode-hook~ and ~tar-mode-hook~ to the
+  ~lin-mode-hooks~. Thanks to Nicolas De Jaeghere for the
+  contribution. It too does not require copyright assignment.
+
 * Version 1.0.0 on 2022-09-08
 
 + Clarified the doc string of the user option ~lin-mode-hooks~.  This
