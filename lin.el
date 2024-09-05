@@ -396,7 +396,7 @@ With optional non-nil REVERSE argument, remove those hooks."
 
 (defun lin--buffer-hidden-p (buffer)
   "Return non-nil if BUFFER is hidden."
-  (string-prefix-p " " buffer))
+  (string-prefix-p " " (buffer-name buffer)))
 
 (defun lin--non-hidden-buffers ()
   "Return `buffer-list' without hidden buffers."
